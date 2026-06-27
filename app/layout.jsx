@@ -20,7 +20,24 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   title: 'On Becoming with Katrina Thorpe',
-  description: 'Honest conversations about healing, identity and building a beautiful life after divorce.',
+  description: 'Honest conversations about healing, identity and building a beautiful life after divorce, with Katrina Thorpe.',
+  openGraph: {
+    title: 'On Becoming with Katrina Thorpe',
+    description: 'Honest conversations about healing, identity and building a beautiful life after divorce, with Katrina Thorpe.',
+    url: 'https://www.onbecoming.co.nz',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.onbecoming.co.nz/on-becoming-og-image.png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'On Becoming with Katrina Thorpe',
+    description: 'Honest conversations about healing, identity and building a beautiful life after divorce, with Katrina Thorpe.',
+    images: ['https://www.onbecoming.co.nz/on-becoming-og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }) {
