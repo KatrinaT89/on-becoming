@@ -15,13 +15,10 @@ export async function POST(request) {
   }
 
   try {
-    const response = await fetch(`https://api.emailoctopus.com/lists/${LIST_ID}/contacts`, {
+    const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${LIST_ID}/contacts`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({ email_address: email, status: 'subscribed' }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ api_key: API_KEY, email_address: email, status: 'SUBSCRIBED' }),
     })
 
     const data = await response.json().catch(() => ({}))
