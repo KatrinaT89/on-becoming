@@ -44,7 +44,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.ctaSpotify}
               >
-                &#9654; Listen on Spotify
+                Listen on Spotify
               </a>
               <Link href="/about" className={styles.ctaMeet}>
                 Meet Katrina
