@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import styles from './home.module.css'
 
+export const metadata = {
+  title: 'On Becoming with Katrina Thorpe | Podcast for Women After Divorce',
+  description: 'Honest conversations about healing, identity and building a fulfilling life after divorce or breakup. Listen to On Becoming with Katrina Thorpe.',
+}
+
 const latestEpisodes = [
   {
     num: '09',

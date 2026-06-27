@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import styles from './about.module.css'
 
+export const metadata = {
+  title: 'About Katrina Thorpe | On Becoming Podcast',
+  description: "Meet Katrina Thorpe, host of On Becoming. After her own divorce, she created the honest, warm conversations she needed most — and couldn't find.",
+}
+
 export default function About() {
   return (
     <>
