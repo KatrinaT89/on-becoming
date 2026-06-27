@@ -1,0 +1,209 @@
+.page {
+  background: #faf8f6;
+  min-height: calc(100vh - 80px);
+}
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 60px 40px 90px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(57, 62, 70, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 560px;
+}
+
+.cardLeft {
+  padding: 72px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c48a9a;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 22px;
+}
+
+.h1Accent {
+  font-style: italic;
+  color: #c48a9a;
+}
+
+.intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #393e46;
+  margin: 0 0 14px;
+  max-width: 440px;
+}
+
+.introItalic {
+  font-style: italic;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 440px;
+}
+
+.bullet {
+  display: flex;
+  gap: 12px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: #393e46;
+}
+
+.bulletDot {
+  color: #c48a9a;
+  flex-shrink: 0;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 440px;
+}
+
+.emailInput {
+  background: #faf8f6;
+  border: 1px solid rgba(57, 62, 70, 0.2);
+  border-radius: 40px;
+  padding: 17px 24px;
+  color: #1e1e1e;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.emailInput:focus {
+  border-color: #c48a9a;
+}
+
+.submitBtn {
+  background: #c48a9a;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 17px 24px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  min-height: 56px;
+  transition: opacity 0.15s;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.errorMsg {
+  font-size: 13.5px;
+  color: #b4546b;
+  line-height: 1.5;
+  padding: 2px 6px;
+}
+
+.finePrint {
+  font-size: 12px;
+  color: #393e46;
+  opacity: 0.55;
+  line-height: 1.5;
+  padding: 2px 6px;
+}
+
+/* Success state */
+.successCard {
+  max-width: 440px;
+  background: #f3eee9;
+  border-radius: 14px;
+  padding: 40px 36px;
+  text-align: center;
+}
+
+.successTitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 30px;
+  color: #c48a9a;
+  margin-bottom: 12px;
+}
+
+.successText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #393e46;
+  margin: 0;
+}
+
+/* Image */
+.cardImage {
+  background: url('/assets/katrina-welcome.jpeg') 50% 22% / cover no-repeat;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .cardImage {
+    min-height: 280px;
+    order: -1;
+  }
+
+  .cardLeft {
+    padding: 48px 40px;
+  }
+
+  .h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 40px 24px 72px;
+  }
+
+  .cardLeft {
+    padding: 40px 28px;
+  }
+
+  .h1 {
+    font-size: 32px;
+  }
+}

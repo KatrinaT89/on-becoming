@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  .ob-nav-links{display:flex;gap:32px;align-items:center;}
+  .ob-burger{display:none;}
+  .ob-nav a[data-active="true"]{color:#c48a9a;}
+  @media(max-width:840px){
+    .ob-nav-links{display:none;}
+    .ob-burger{display:flex;}
+  }
+</style>
+</helmet>
+<div class="ob-nav" style="position:sticky;top:0;z-index:50;background:rgba(250,248,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(57,62,70,.08);font-family:'DM Sans',sans-serif;">
+  <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:22px 40px;">
+    <a href="Home.dc.html" style="font-family:'Playfair Display',serif;font-size:25px;font-weight:600;letter-spacing:-.01em;color:#1e1e1e;text-decoration:none;">On <span style="color:#c48a9a;font-style:italic;">Becoming</span></a>
+    <div class="ob-nav-links">
+      <sc-for list="{{ links }}" as="link" hint-placeholder-count="5">
+        <a href="{{ link.href }}" data-active="{{ link.isActive }}" style="font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#393e46;text-decoration:none;">{{ link.label }}</a>
+      </sc-for>
+    </div>
+    <button class="ob-burger" onClick="{{ toggle }}" style="flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;">
+      <span style="width:24px;height:1.5px;background:#393e46;display:block;"></span>
+      <span style="width:24px;height:1.5px;background:#393e46;display:block;"></span>
+      <span style="width:24px;height:1.5px;background:#393e46;display:block;"></span>
+    </button>
+  </div>
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:1px solid rgba(57,62,70,.08);padding:14px 40px 22px;display:flex;flex-direction:column;gap:4px;">
+      <sc-for list="{{ links }}" as="link" hint-placeholder-count="5">
+        <a href="{{ link.href }}" data-active="{{ link.isActive }}" style="font-size:14px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:#393e46;text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(57,62,70,.06);">{{ link.label }}</a>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:80},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;episodes&quot;,&quot;newsletter&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  renderVals() {
+    const active = this.props.active || 'home';
+    const defs = [
+      { label: 'Home', href: 'Home.dc.html', key: 'home' },
+      { label: 'About', href: 'About.dc.html', key: 'about' },
+      { label: 'Episodes', href: 'Episodes.dc.html', key: 'episodes' },
+      { label: 'Newsletter', href: 'Newsletter.dc.html', key: 'newsletter' },
+      { label: 'Contact', href: 'Contact.dc.html', key: 'contact' },
+    ];
+    return {
+      open: this.state.open,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      links: defs.map(d => ({ ...d, isActive: d.key === active })),
+    };
+  }
+}
+</script>
+</body>
+</html>

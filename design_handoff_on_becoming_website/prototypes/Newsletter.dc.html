@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .ob-news{display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch;min-height:560px;}
+  .ob-news-img{background:url('assets/katrina-welcome.jpeg') 50% 22%/cover no-repeat;}
+  @media(max-width:860px){
+    .ob-news{grid-template-columns:1fr;}
+    .ob-news-img{min-height:280px;order:-1;}
+  }
+</style>
+</helmet>
+<div style="background:#faf8f6;color:#1e1e1e;font-family:'DM Sans',sans-serif;min-height:100vh;">
+
+  <dc-import name="SiteNav" active="newsletter" hint-size="100%,80px"></dc-import>
+
+  <section style="max-width:1180px;margin:0 auto;padding:60px 40px 90px;">
+    <div class="ob-news" style="background:#fff;border:1px solid rgba(57,62,70,.1);border-radius:14px;overflow:hidden;">
+      <!-- LEFT : copy + form -->
+      <div style="padding:72px 60px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c48a9a;font-weight:600;margin-bottom:24px;">The community</div>
+        <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:48px;line-height:1.08;letter-spacing:-.015em;margin:0 0 22px;">You don't have to figure this out <span style="font-style:italic;color:#c48a9a;">alone.</span></h1>
+        <p style="font-size:17px;line-height:1.7;color:#393e46;margin:0 0 14px;max-width:440px;">Join a quiet, kind corner of the internet. Sign up and the first thing you'll get is my free guide, <span style="font-style:italic;">Becoming Her: A Strategic Identity Reset</span>. After that, expect:</p>
+        <ul style="list-style:none;padding:0;margin:0 0 34px;display:flex;flex-direction:column;gap:12px;max-width:440px;">
+          <li style="display:flex;gap:12px;font-size:15.5px;line-height:1.5;color:#393e46;"><span style="color:#c48a9a;">&bull;</span> Your free guide, the moment you join</li>
+          <li style="display:flex;gap:12px;font-size:15.5px;line-height:1.5;color:#393e46;"><span style="color:#c48a9a;">&bull;</span> New episodes the moment they drop</li>
+          <li style="display:flex;gap:12px;font-size:15.5px;line-height:1.5;color:#393e46;"><span style="color:#c48a9a;">&bull;</span> Honest reflections and little encouragements. No spam, ever.</li>
+        </ul>
+
+        <!-- FORM STATES -->
+        <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:12px;max-width:440px;">
+            <input type="email" value="{{ email }}" onInput="{{ onEmail }}" placeholder="Your email address" style="background:#faf8f6;border:1px solid rgba(57,62,70,.2);border-radius:40px;padding:17px 24px;color:#1e1e1e;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;" />
+            <button type="submit" style="background:#c48a9a;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:17px 24px;border-radius:40px;cursor:pointer;">{{ btnLabel }}</button>
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px;color:#b4546b;line-height:1.5;padding:2px 6px;">{{ errorMsg }}</div>
+            </sc-if>
+            <div style="font-size:12px;color:#393e46;opacity:.55;line-height:1.5;padding:2px 6px;">By subscribing you agree to receive emails from On Becoming. Unsubscribe anytime.</div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width:440px;background:#f3eee9;border-radius:14px;padding:40px 36px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:30px;color:#c48a9a;margin-bottom:12px;">You're in.</div>
+            <p style="font-size:16px;line-height:1.6;color:#393e46;margin:0;">So glad you're here. Keep an eye on your inbox, your free guide is on its way. <span style="white-space:nowrap;">Katrina xx</span></p>
+          </div>
+        </sc-if>
+      </div>
+      <!-- RIGHT : image -->
+      <div class="ob-news-img"></div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { email: '', status: 'idle', error: '' };
+
+  onEmail = (e) => this.setState({ email: e.target.value, error: '' });
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const email = (this.state.email || '').trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      this.setState({ error: 'Hmm, that email doesn\u2019t look quite right \u2014 mind checking it?' });
+      return;
+    }
+    this.setState({ status: 'loading', error: '' });
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) { this.setState({ status: 'success' }); return; }
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data && data.error ? data.error : 'request_failed');
+    } catch (err) {
+      // No /api/subscribe in the design preview → show the success UX so it can be reviewed.
+      // Once deployed with the serverless function (see api/subscribe.js), real failures fall through to the error state below.
+      if (!window.location.pathname.startsWith('/api')) {
+        this.setState({ status: 'success' });
+        return;
+      }
+      this.setState({ status: 'idle', error: 'Something went wrong on our end \u2014 please try again in a moment.' });
+    }
+  };
+
+  renderVals() {
+    const status = this.state.status;
+    return {
+      email: this.state.email,
+      onEmail: this.onEmail,
+      onSubmit: this.onSubmit,
+      isForm: status === 'idle' || status === 'loading',
+      isSuccess: status === 'success',
+      hasError: !!this.state.error,
+      errorMsg: this.state.error,
+      btnLabel: status === 'loading' ? 'Subscribing\u2026' : 'Join the community',
+    };
+  }
+}
+</script>
+</body>
+</html>

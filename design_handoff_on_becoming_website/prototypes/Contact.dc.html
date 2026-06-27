@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .ob-contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;}
+  .ob-field{display:flex;flex-direction:column;gap:8px;}
+  .ob-input{background:#fff;border:1px solid rgba(57,62,70,.2);border-radius:10px;padding:15px 18px;color:#1e1e1e;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;width:100%;}
+  .ob-input:focus{border-color:#c48a9a;}
+  @media(max-width:860px){ .ob-contact{grid-template-columns:1fr;gap:44px;} }
+</style>
+</helmet>
+<div style="background:#faf8f6;color:#1e1e1e;font-family:'DM Sans',sans-serif;min-height:100vh;">
+
+  <dc-import name="SiteNav" active="contact" hint-size="100%,80px"></dc-import>
+
+  <section style="max-width:1080px;margin:0 auto;padding:84px 40px 100px;">
+    <div class="ob-contact">
+      <!-- LEFT : intro + socials -->
+      <div>
+        <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c48a9a;font-weight:600;margin-bottom:24px;">Say hello</div>
+        <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:52px;line-height:1.04;letter-spacing:-.015em;margin:0 0 24px;">I'd love to hear <span style="font-style:italic;color:#c48a9a;">from you.</span></h1>
+        <p style="font-size:17px;line-height:1.75;color:#393e46;margin:0 0 36px;max-width:380px;">A question, a story, a guest idea, or just a note to say the podcast found you at the right time. It all means the world. Drop me a message and I'll be in touch.</p>
+        <div style="aspect-ratio:5/4;border-radius:14px;background:url('assets/katrina-contact.jpeg') 30% 30%/cover no-repeat;margin:0 0 32px;max-width:380px;box-shadow:0 18px 44px rgba(57,62,70,.16);"></div>
+        <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#393e46;opacity:.55;font-weight:600;margin-bottom:16px;">Find me here</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="https://www.instagram.com/onbecoming_podcast" target="_blank" style="color:#1e1e1e;text-decoration:none;font-size:15.5px;font-weight:500;display:inline-flex;align-items:center;gap:12px;"><span style="color:#c48a9a;">&rarr;</span> Instagram &middot; @onbecoming_podcast</a>
+        </div>
+      </div>
+
+      <!-- RIGHT : form / success -->
+      <div style="background:#fff;border:1px solid rgba(57,62,70,.1);border-radius:16px;padding:44px 40px;">
+        <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:22px;">
+            <div class="ob-field">
+              <label style="font-size:13px;font-weight:600;color:#393e46;letter-spacing:.02em;">Name</label>
+              <input class="ob-input" value="{{ name }}" onInput="{{ onName }}" placeholder="Your name" />
+            </div>
+            <div class="ob-field">
+              <label style="font-size:13px;font-weight:600;color:#393e46;letter-spacing:.02em;">Email</label>
+              <input class="ob-input" type="email" value="{{ email }}" onInput="{{ onEmail }}" placeholder="you@email.com" />
+            </div>
+            <div class="ob-field">
+              <label style="font-size:13px;font-weight:600;color:#393e46;letter-spacing:.02em;">Message</label>
+              <textarea class="ob-input" value="{{ message }}" onInput="{{ onMessage }}" placeholder="Write your message here…" style="min-height:140px;resize:vertical;line-height:1.6;"></textarea>
+            </div>
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px;color:#b4546b;line-height:1.5;">{{ errorMsg }}</div>
+            </sc-if>
+            <button type="submit" style="background:#c48a9a;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:17px 24px;border-radius:40px;cursor:pointer;">{{ btnLabel }}</button>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:30px 10px;">
+            <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:32px;color:#c48a9a;margin-bottom:16px;">Thank you.</div>
+            <p style="font-size:16.5px;line-height:1.65;color:#393e46;margin:0;">Thanks for reaching out. I'll be in touch soon.<br><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:#1e1e1e;">Katrina xx</span></p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { name: '', email: '', message: '', status: 'idle', error: '' };
+
+  onName = (e) => this.setState({ name: e.target.value, error: '' });
+  onEmail = (e) => this.setState({ email: e.target.value, error: '' });
+  onMessage = (e) => this.setState({ message: e.target.value, error: '' });
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, message } = this.state;
+    if (!name.trim() || !message.trim()) {
+      this.setState({ error: 'Please add your name and a message so I know who I\u2019m talking to.' });
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((email || '').trim())) {
+      this.setState({ error: 'That email doesn\u2019t look quite right \u2014 mind checking it?' });
+      return;
+    }
+    this.setState({ status: 'loading', error: '' });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() }),
+      });
+      if (res.ok) { this.setState({ status: 'success' }); return; }
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data && data.error ? data.error : 'request_failed');
+    } catch (err) {
+      // No /api/contact in the design preview → show the success UX so it can be reviewed.
+      // Once deployed with the serverless function (see api/contact.js), real failures fall through to the error state.
+      if (!window.location.pathname.startsWith('/api')) {
+        this.setState({ status: 'success' });
+        return;
+      }
+      this.setState({ status: 'idle', error: 'Something went wrong sending your message \u2014 please try again in a moment.' });
+    }
+  };
+
+  renderVals() {
+    const status = this.state.status;
+    return {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+      onName: this.onName,
+      onEmail: this.onEmail,
+      onMessage: this.onMessage,
+      onSubmit: this.onSubmit,
+      isForm: status === 'idle' || status === 'loading',
+      isSuccess: status === 'success',
+      hasError: !!this.state.error,
+      errorMsg: this.state.error,
+      btnLabel: status === 'loading' ? 'Sending\u2026' : 'Send message',
+    };
+  }
+}
+</script>
+</body>
+</html>

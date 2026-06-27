@@ -1,0 +1,269 @@
+/* ── Hero ── */
+.heroSection {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 84px 40px 90px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c48a9a;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 62px;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 26px;
+}
+
+.h1Accent {
+  font-style: italic;
+  color: #c48a9a;
+}
+
+.heroIntro {
+  font-size: 18.5px;
+  line-height: 1.7;
+  color: #393e46;
+  margin: 0;
+  max-width: 440px;
+}
+
+.heroImageWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.heroPortrait {
+  width: 420px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  background: url('/assets/katrina-about.jpeg') 52% 14% / cover no-repeat;
+  box-shadow: 0 26px 60px rgba(57, 62, 70, 0.2);
+}
+
+/* ── Story section ── */
+.storySection {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 30px 40px 20px;
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 34px;
+  margin: 0 0 22px;
+  letter-spacing: -0.01em;
+}
+
+.storyPara {
+  font-size: 17.5px;
+  line-height: 1.8;
+  color: #393e46;
+  margin: 0 0 22px;
+}
+
+/* ── Lifestyle photos ── */
+.lifeSection {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 40px;
+}
+
+.lifeEyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c48a9a;
+  font-weight: 600;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.lifeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.lifePhoto {
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ── Pull quote ── */
+.quoteSection {
+  background: #f3eee9;
+  padding: 104px 40px;
+  text-align: center;
+  margin: 50px 0 0;
+}
+
+.quoteInner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 42px;
+  line-height: 1.35;
+  color: #c48a9a;
+  margin: 0;
+}
+
+/* ── CTA band ── */
+.ctaSection {
+  background: #393e46;
+  color: #faf8f6;
+  padding: 96px 40px;
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.ctaHeading {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 42px;
+  margin: 0 0 16px;
+}
+
+.ctaAccent {
+  font-style: italic;
+  color: #e0a7b6;
+}
+
+.ctaText {
+  font-size: 16px;
+  line-height: 1.65;
+  opacity: 0.82;
+  margin: 0 0 32px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPink {
+  display: inline-block;
+  background: #c48a9a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  border-radius: 40px;
+  text-decoration: none;
+}
+
+.btnOutlineLight {
+  display: inline-block;
+  border: 1px solid rgba(250, 248, 246, 0.4);
+  color: #faf8f6;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  border-radius: 40px;
+  text-decoration: none;
+}
+
+.signoff {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  color: #1e1e1e;
+  margin-top: 30px;
+}
+
+/* Used on the final storySection that sits between the CTA band and the footer */
+.storySectionFinal {
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .heroPortrait {
+    margin: 0 auto;
+  }
+
+  .heroIntro {
+    max-width: 100%;
+  }
+
+  .h1 {
+    font-size: 48px;
+  }
+
+  .quoteText {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lifeGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 60px 24px 72px;
+  }
+
+  .storySection {
+    padding: 20px 24px 16px;
+  }
+
+  .lifeSection {
+    padding: 40px 24px;
+  }
+
+  .quoteSection {
+    padding: 72px 24px;
+  }
+
+  .ctaSection {
+    padding: 72px 24px;
+  }
+
+  .ctaHeading {
+    font-size: 32px;
+  }
+}

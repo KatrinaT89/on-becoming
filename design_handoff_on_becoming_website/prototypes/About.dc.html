@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .ob-about-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .ob-story p{font-size:17.5px;line-height:1.8;color:#393e46;margin:0 0 22px;}
+  @media(max-width:860px){
+    .ob-about-hero{grid-template-columns:1fr;gap:36px;text-align:center;}
+    .ob-about-portrait{margin:0 auto;}
+  }
+  @media(max-width:600px){ .ob-life-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</helmet>
+<div style="background:#faf8f6;color:#1e1e1e;font-family:'DM Sans',sans-serif;min-height:100vh;">
+
+  <dc-import name="SiteNav" active="about" hint-size="100%,80px"></dc-import>
+
+  <!-- HERO -->
+  <section style="max-width:1180px;margin:0 auto;padding:84px 40px 90px;">
+    <div class="ob-about-hero">
+      <div>
+        <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c48a9a;font-weight:600;margin-bottom:24px;">Meet Katrina</div>
+        <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:62px;line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;">Hi, I'm <span style="font-style:italic;color:#c48a9a;">Katrina.</span></h1>
+        <p style="font-size:18.5px;line-height:1.7;color:#393e46;margin:0;max-width:440px;">I'm the voice behind On Becoming. A few years ago my marriage ended, and with it, the version of life I thought I'd have forever. This podcast is everything I wish someone had said to me back then.</p>
+      </div>
+      <div style="display:flex;justify-content:center;">
+        <div class="ob-about-portrait" style="width:420px;max-width:100%;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:url('assets/katrina-about.jpeg') 52% 14%/cover no-repeat;box-shadow:0 26px 60px rgba(57,62,70,.20);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="ob-story" style="max-width:720px;margin:0 auto;padding:30px 40px 20px;">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:34px;margin:0 0 22px;letter-spacing:-.01em;">My journey</h2>
+    <p>When my marriage ended, I didn't just lose a relationship. I lost the story I'd built my whole identity around. For a while, I didn't recognise the woman in the mirror.</p>
+    <p>The months that followed were the hardest, loneliest and, strangely, the most transformative of my life. Slowly, through a lot of trial and error and a few too many late nights, I started to rebuild. Not back into who I was, but forward into someone I actually liked.</p>
+  </section>
+
+  <!-- LIFESTYLE TRIO -->
+  <section style="max-width:1180px;margin:0 auto;padding:56px 40px;">
+    <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c48a9a;font-weight:600;margin-bottom:22px;text-align:center;">Life outside the mic</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;" class="ob-life-grid">
+      <div style="aspect-ratio:4/5;border-radius:12px;background:url('assets/life-lake.jpeg') 40% 50%/cover no-repeat;"></div>
+      <div style="aspect-ratio:4/5;border-radius:12px;background:url('assets/life-fishing.jpeg') 50% 35%/cover no-repeat;"></div>
+      <div style="aspect-ratio:4/5;border-radius:12px;background:url('assets/life-boat.jpeg') 50% 35%/cover no-repeat;"></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="ob-story" style="max-width:720px;margin:0 auto;padding:20px 40px 30px;">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:34px;margin:0 0 22px;letter-spacing:-.01em;">Why I started On Becoming</h2>
+    <p>I started this podcast because the conversations I needed most were the ones nobody was having out loud. The messy middle. The 3am questions. The grief that hides inside a 'fresh start.'</p>
+    <p>I wanted to create the warm, honest voice I went looking for and couldn't find, for the woman sitting exactly where I once sat, wondering if she'd ever feel like herself again.</p>
+  </section>
+
+  <!-- PULL QUOTE : pink -->
+  <section style="background:#f3eee9;padding:104px 40px;text-align:center;margin:50px 0;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-family:'Playfair Display',serif;font-weight:400;font-style:italic;font-size:42px;line-height:1.35;color:#c48a9a;margin:0;">You are not starting over. You are starting from experience, and becoming someone you were always meant to be.</p>
+    </div>
+  </section>
+
+  <!-- WHAT I HOPE -->
+  <section class="ob-story" style="max-width:720px;margin:0 auto;padding:10px 40px 60px;">
+    <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:34px;margin:0 0 22px;letter-spacing:-.01em;">What I hope you feel</h2>
+    <p>More than anything, I want you to feel less alone. Whether you're in the rawest early days or finally finding your feet again, I hope this space feels like a friend who truly gets it.</p>
+    <p>There's no timeline here, and no 'right' way to heal. Just honest conversation, gentle encouragement, and the quiet reminder that you are becoming, and you are so welcome here.</p>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#1e1e1e;margin-top:30px;">Katrina xx</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#393e46;color:#faf8f6;padding:96px 40px;text-align:center;">
+    <div style="max-width:560px;margin:0 auto;">
+      <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:42px;margin:0 0 16px;">Come sit with <span style="font-style:italic;color:#e0a7b6;">me</span></h2>
+      <p style="font-size:16px;line-height:1.65;opacity:.82;margin:0 0 32px;">Start with an episode, or join the community and we'll stay in touch.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="Episodes.dc.html" style="display:inline-block;background:#c48a9a;color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:16px 34px;border-radius:40px;">Browse episodes</a>
+        <a href="Newsletter.dc.html" style="display:inline-block;border:1px solid rgba(250,248,246,.4);color:#faf8f6;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:16px 34px;border-radius:40px;">Join the community</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,28 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  background: #faf8f6;
+  color: #1e1e1e;
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+}
+
+:root {
+  --cream: #faf8f6;
+  --surface-warm: #f3eee9;
+  --pink: #c48a9a;
+  --pink-light: #e0a7b6;
+  --greyblue: #393e46;
+  --charcoal: #1e1e1e;
+  --error: #b4546b;
+  --hairline: rgba(57, 62, 70, 0.1);
+  --font-serif: var(--font-playfair), 'Playfair Display', serif;
+  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+p { margin: 0; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }

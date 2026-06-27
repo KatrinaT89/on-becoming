@@ -1,0 +1,222 @@
+.page {
+  background: #faf8f6;
+}
+
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 84px 40px 100px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Left column ── */
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c48a9a;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0 0 24px;
+}
+
+.h1Accent {
+  font-style: italic;
+  color: #c48a9a;
+}
+
+.intro {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #393e46;
+  margin: 0 0 36px;
+  max-width: 380px;
+}
+
+.photo {
+  aspect-ratio: 5 / 4;
+  border-radius: 14px;
+  background: url('/assets/katrina-contact.jpeg') 30% 30% / cover no-repeat;
+  margin: 0 0 32px;
+  max-width: 380px;
+  box-shadow: 0 18px 44px rgba(57, 62, 70, 0.16);
+}
+
+.socialsLabel {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #393e46;
+  opacity: 0.55;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.socialsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.socialLink {
+  color: #1e1e1e;
+  font-size: 15.5px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.socialArrow {
+  color: #c48a9a;
+}
+
+/* ── Right column: form card ── */
+.formCard {
+  background: #fff;
+  border: 1px solid rgba(57, 62, 70, 0.1);
+  border-radius: 16px;
+  padding: 44px 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #393e46;
+  letter-spacing: 0.02em;
+}
+
+.input,
+.textarea {
+  background: #fff;
+  border: 1px solid rgba(57, 62, 70, 0.2);
+  border-radius: 10px;
+  padding: 15px 18px;
+  color: #1e1e1e;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #c48a9a;
+}
+
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.errorMsg {
+  font-size: 13.5px;
+  color: #b4546b;
+  line-height: 1.5;
+}
+
+.submitBtn {
+  background: #c48a9a;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 17px 24px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  min-height: 56px;
+  transition: opacity 0.15s;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success state */
+.successState {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.successTitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 32px;
+  color: #c48a9a;
+  margin-bottom: 16px;
+}
+
+.successText {
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: #393e46;
+  margin: 0;
+}
+
+.successSignoff {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 19px;
+  color: #1e1e1e;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 24px 72px;
+  }
+
+  .formCard {
+    padding: 32px 24px;
+  }
+
+  .h1 {
+    font-size: 34px;
+  }
+}
